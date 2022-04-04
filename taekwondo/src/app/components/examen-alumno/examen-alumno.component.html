@@ -1,0 +1,63 @@
+<!--<div style="height: 40px;"></div>
+<section>
+    <div class="card-body">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">Alumno</th>
+                    <th class="text-center">Examen</th>
+                    <th class="text-center">Fecha</th>-->
+                    <!--<th></th>-->
+               <!-- </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let dato of datos">
+                    <td class="text-center">{{ dato.nombre }}</td>
+                    <td class="text-center">{{ dato.apellidos }}</td>
+                    <td class="text-center">{{ dato.actividad_marcial }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section> -->
+
+
+<!-- Page Content -->
+<div style="height: 65px;"></div>
+<section>
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">{{ principal ? principal.nombre : 'No hay examenes disponibles' }}</h1>
+      <p class="lead">Tipo de Examen: {{ principal ? principal.tipo_examen : '' }}</p>
+      <p class="lead">Costo: ${{ principal ? principal.costo : '' }}</p>
+      <p class="lead">Horario: ${{ principal ? principal.horario : '' }}</p>
+      <p class="card-text"><button (click)="showPDF(principal.solicitud_examen)" type="button" class="btn btn-link"><i class="fas fa-book-reader"></i>&nbsp;&nbsp;Solicitud</button></p>
+      <a href="{{principal.enlace_facebook}}" class="btn btn-primary btn-lg">Más!</a>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center" >
+
+      <div class="col-lg-3 col-md-6 mb-4" *ngFor="let examen of examenes">
+        <div class="card h-100">
+          <div class="card-body">
+            <h4 class="card-title">{{ examen.nombre }}</h4>
+            <p class="card-text">{{ examen.tipo_examen }}</p>
+            <p class="card-text">{{ examen.fecha | date: 'MMM dd, yyyy'}} </p>
+            <p class="card-text">Costo:  ${{ examen.costo }}</p>
+            <p class="card-text">Horario: {{ examen.horario }}</p>
+            <p class="card-text"><button (click)="showPDF(examen.solicitud_examen)" type="button" class="btn btn-link"><i class="fas fa-book-reader"></i>&nbsp;&nbsp;Solicitud</button></p>
+          </div>
+          <div class="card-footer">
+            <a href="{{examen.enlace_facebook}}" class="btn btn-primary">Más información</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+</section>
